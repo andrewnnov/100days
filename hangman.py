@@ -2,23 +2,28 @@ import random
 #Step1
 word_list = ["ardvark", "baboon", "camel"]
 
-#TODO-1 Randomly choose a word from the word_list and assign it to a variable called chosen_word
+choosen_word = random.choice(word_list)
 
-choosen_word = word_list[random.randint(0, len(word_list) - 1)]
-print(choosen_word)
-#random.choice(word_list) - choose from list
+display = []
+for _ in range(len(choosen_word)):
+    display.append('_')                
 
-#TODO-2 Ask the user to guess a letter and assign their answer to a variable called guess lowercase.
+
+
+#Testing code
+print(f'Psss, the solution is {choosen_word}.')
+print(display)
+
 
 guess = input("Guess a letter: ").lower()
 print(guess)
 
-#TODO-3 Check if the letter the user guessed(guess) is one of letters tn the chosen_word
 
-for letter in choosen_word:
-    if letter == guess:
-        print("Right")
-    else:
-        print("Wrong")
+for position in range(len(choosen_word)):
+    if choosen_word[position] == guess:
+        display[position] = guess
+
+
+print(display)
 
 
