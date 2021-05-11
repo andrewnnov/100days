@@ -14,16 +14,23 @@ for _ in range(len(choosen_word)):
 print(f'Psss, the solution is {choosen_word}.')
 print(display)
 
+end_of_game = False
 
-guess = input("Guess a letter: ").lower()
-print(guess)
+while not end_of_game:
+    guess = input("Guess a letter: ").lower()
+    print(guess)
+
+    for position in range(len(choosen_word)):
+        if choosen_word[position] == guess:
+            display[position] = guess
+
+    print(display)
+
+    if "_" not in display:
+        end_of_game = True
+        print("You win")
+    
 
 
-for position in range(len(choosen_word)):
-    if choosen_word[position] == guess:
-        display[position] = guess
-
-
-print(display)
 
 
