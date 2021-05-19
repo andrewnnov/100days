@@ -1,5 +1,65 @@
 import random
-#Step1
+
+stages = ['''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+''']
+
+
+lives = 6
+
 word_list = ["ardvark", "baboon", "camel"]
 
 choosen_word = random.choice(word_list)
@@ -13,6 +73,7 @@ for _ in range(len(choosen_word)):
 #Testing code
 print(f'Psss, the solution is {choosen_word}.')
 print(display)
+print(stages[lives])
 
 end_of_game = False
 
@@ -23,12 +84,25 @@ while not end_of_game:
     for position in range(len(choosen_word)):
         if choosen_word[position] == guess:
             display[position] = guess
+        
+    if guess not in choosen_word:
+            lives = lives - 1
+            print("The letter Your choose is not in the word")
+            if lives == 0:
+                end_of_game = True
+                print("You lose")
+                
+                
 
     print(display)
+    print(stages[lives])
+    #print(lives)
 
+    
     if "_" not in display:
         end_of_game = True
         print("You win")
+    
     
 
 
