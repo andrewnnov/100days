@@ -7,35 +7,30 @@ shift = int(input("Type the shift number:\n"))
 
 
 
-def encrypt(plain_text, shift_amount):
-    encr_word = ""
-    for letter in plain_text:
+def caesar(text, shift, direction):
+    result_word = ""
+    if direction == 'decode':
+        shift *= -1
+    for letter in text:
         position = alphabet.index(letter)
-        if position + shift_amount >= len(alphabet):
-            new_letter = alphabet[position + shift_amount - len(alphabet)]
-            encr_word += new_letter
+        if position + shift >= len(alphabet):
+            new_letter = alphabet[position + shift - len(alphabet)]
+            result_word += new_letter
         else:
-            new_letter = alphabet[position + shift_amount]
-            encr_word += new_letter             
-    print(f"The encoded text is {encr_word}") 
+            new_letter = alphabet[position + shift]
+            result_word += new_letter
+        
+    print(f"Here's the {direction}d result: {result_word}")        
+
+    
+caesar(text, shift, direction)    
 
 
 
-def decrypt(cipher_text, shift_amount):
-    decr_word = ""
-    for letter in cipher_text:
-        position = alphabet.index(letter)
-        if position - shift_amount < 0:
-            new_letter = alphabet[len(alphabet) - position - shift_amount]
-            decr_word += new_letter
-        else:
-            new_letter = alphabet[position - shift_amount]
-            decr_word += new_letter             
-    print(f"The encoded text is {decr_word}")
 
 
-if direction == "encode":
-    encrypt(plain_text = text, shift_amount = shift)
-elif direction == 'decode':
-    decrypt(cipher_text = text, shift_amount = shift)
+
+
+
+
     
