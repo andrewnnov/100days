@@ -3,10 +3,7 @@ import art
 
 print(art.logo)
 
-n1 = int(input("What's the first number?: "))
 
-
-result = 0
 
 def add(n1, n2):
     return n1 + n2
@@ -22,35 +19,31 @@ def div(n1, n2):
 def sub(n1, n2):
     return n1 - n2
 
-dict_operation = {"+": add, "*": mult, "/": div, "-": sub}
+def calculator():
+    n1 = float(input("What's the first number?: "))
 
-is_calc = True
+    operations = {"+": add, "*": mult, "/": div, "-": sub}
+    is_continue = True
 
-while is_calc == True:
-    
-    operation = input("Pick the operation: + - * / : " )
-    n2 = int(input("What's the second number?: "))
+    for symbol in operations:
+            print(symbol)
 
-    if operation == "*":
-        result = mult(n1, n2)
-        print(f"{n1} {operation} {n2} = {result}")
-    elif operation == "+":
-        result = add(n1, n2)
-        print(f"{n1} {operation} {n2} = {result}")
-    elif operation == "-":
-        result = sub(n1, n2)
-        print(f"{n1} {operation} {n2} = {result}")
-    elif operation == "/":
-        result = div(n1, n2)
-        print(f"{n1} {operation} {n2} = {result}")
-    is_continue = input(f"Type 'y' to continue calculating with {result}, or type 'n' to start a new calculation if you want to exit type 'ex': ")
-    
-    if is_continue == 'ex':
-        is_calc = False    
 
-    elif is_continue == 'y':
-        n1 = result
-    else:
-        result = 0
-        n1 = int(input("What's the first number?: "))
-       
+    while is_continue == True:    
+        operation_symbol = input("Pick the operation: " )
+        n2 = float(input("What's the next number?: "))
+        calculation_function = operations[operation_symbol]
+        answer = calculation_function(n1, n2)
+        print(f"{n1} {operation_symbol} {n2} = {answer}")
+        input_design = input(f"Type 'y' continue calculating with {answer}, or type 'n' to start a new calculation: ")
+
+        if input_design =='y':
+            n1 = answer
+                
+        else:
+            is_continue = False
+            calculator()
+
+
+
+calculator()
