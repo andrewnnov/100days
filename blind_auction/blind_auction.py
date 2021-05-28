@@ -1,6 +1,5 @@
 import art
 
-
 print(art.logo)
 
 is_new_people = True
@@ -15,17 +14,16 @@ while is_new_people:
     is_bidders = input("Are there any other bidders? Type 'yes' or 'no'")
 
     if is_bidders == 'no':
-       is_new_people = False
-    #elif is_bidders == 'yes':
-        # should add clear function
-
+        is_new_people = False
+    # elif is_bidders == 'yes':
+    # should add clear function
 
 
 def find_highest_bigger(auction_dict):
     highest_bid = 0
     winner = ''
     for bidder, bid in auction_dict.items():
-        if (bid > highest_bid):
+        if bid > highest_bid:
             highest_bid = bid
             winner = bidder
 
@@ -33,5 +31,3 @@ def find_highest_bigger(auction_dict):
 
 
 find_highest_bigger(auction_dict)
-
-    
