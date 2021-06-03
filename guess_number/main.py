@@ -33,13 +33,18 @@ def play_game():
             elif user_guess < guess_number:
                 print("More")
                 attempts = attempts - 1
+                if attempts == 0:
+                    print("You lose")
+                    result_of_guess = False
             else:
                 print("You guess")
-                play_again = input("Do you want to play again? y - yes, n - no")
-                if play_again == "y":
-                    play_game()
-                else:
-                    result_of_guess = False
+                result_of_guess = False
+                attempts = 0
 
+        play_again = input("Do you want to play again? y - yes, n - no: ")
+        if play_again == "y":
+            play_game()
+        else:
+            result_of_guess = False
 
 play_game()
