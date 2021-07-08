@@ -1,31 +1,25 @@
 import random
+import turtle as t
 from turtle import Turtle, Screen
 from random import randint
 
 tim = Turtle()
-# tim.shape("turtle")
-# tim.color("red")
-colors = ["red", "green", "black", "blue", "orange", "grey"]
+t.colormode(255)
 
 
-def random_direction():
-    list_of_directions = ["1", "2"]
-    distance = random.randint(10, 20)
-    print(distance)
-    direction = random.choice(list_of_directions)
-    print(direction)
-    tim.forward(distance)
-    if direction == "1":
-        tim.right(90)
-    elif direction == "2":
-        tim.left(90)
+def random_color():
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    random_color = (r, g, b)
+    return random_color
 
 
-for _ in range(1000):
-    tim.color(random.choice(colors))
-    tim.speed(300)
-    tim.pensize(5)
-    random_direction()
+directions = [0, 90, 180, 270]
+tim.pensize(15)
+tim.speed("fastest")
 
-screen = Screen()
-screen.exitonclick()
+for _ in range(200):
+    tim.color(random_color())
+    tim.forward(30)
+    tim.setheading(random.choice(directions))
