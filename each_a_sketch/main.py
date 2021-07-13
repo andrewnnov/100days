@@ -13,11 +13,13 @@ def move_backward():
 
 
 def counter_clockwise():
-    tim.left(10)
+    new_heading = tim.heading() + 10
+    tim.setheading(new_heading)
 
 
 def clockwise():
-    tim.right(10)
+    new_heading = tim.heading() - 10
+    tim.setheading(new_heading)
 
 
 def clear():
