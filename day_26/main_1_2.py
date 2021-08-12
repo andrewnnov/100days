@@ -1,3 +1,5 @@
+import random
+
 
 name = "Angela"
 new_list = [letter for letter in name]
@@ -23,3 +25,12 @@ print(squared_numbers)
 
 even_numbers = [number for number in numbers if number % 2 == 0]
 print(even_numbers)
+
+
+# students_score = {new_key:new_value for item in list}
+
+students_score = {student: random.randint(1, 100) for student in names_list}
+print(students_score)
+
+passed_student = {student: score for (student, score) in students_score.items() if score >= 60 }
+print(passed_student)
