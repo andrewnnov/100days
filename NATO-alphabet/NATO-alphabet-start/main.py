@@ -8,12 +8,8 @@ data_dictionary_alf = {row.letter: row.code for (index, row) in data.iterrows()}
 
 # Create a list of the phonetic code words from a word that the user inputs.
 
-user_word = input("Enter the word: ")
+user_word = input("Enter a word: ")
 user_word_cap = user_word.upper()
 
-list_of_letter = []
-for letter in user_word_cap:
-    if letter in data_dictionary_alf.keys():
-        list_of_letter.append(data_dictionary_alf[letter])
-
+list_of_letter = [data_dictionary_alf[letter] for letter in user_word_cap]
 print(list_of_letter)
