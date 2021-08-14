@@ -16,4 +16,5 @@ for letter in user_word_cap:
     if letter in data_dictionary_alf.keys():
         list_of_letter.append(data_dictionary_alf[letter])
 
+
 print(list_of_letter)
