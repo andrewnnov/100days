@@ -11,13 +11,6 @@ my_label.pack(side="left")
 
 
 
-
-
-
-
-
-
-
 window.mainloop()
 
 
