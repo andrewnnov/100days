@@ -1,4 +1,4 @@
-File not found
+# File not found
 try:
     file = open("a_file.txt")
     a_dictionary = {"key": "value"}
@@ -25,8 +25,6 @@ bmi = weight / height ** 2
 print(bmi)
 
 fruits = ["Apple", "Pear", "Orange"]
-
-
 
 
 def make_pie(index):
