@@ -22,6 +22,8 @@ def generate_password():
     pyperclip.copy(password)
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
+
+
 def save():
     email_text = email_entry.get()
     website_text = website_entry.get()
@@ -57,7 +59,29 @@ def save():
             password_entry.delete(0, END)
 
 
+# ---------------------------- SEARCH PASSWORD ------------------------------- #
+def find_password():
+    website_text = website_entry.get()
+
+    try:
+        with open("data.json", "r") as data_file:
+            # Reading data
+            data = json.load(data_file)
+
+    except FileNotFoundError:
+        messagebox.showinfo(title="Error", message="No Data File Found. ")
+    else:
+        if website_text in data:
+            email = data[website_text]["email"]
+            password = data[website_text]["password"]
+            messagebox.showinfo(title=website_text, message=f"Email: {email}\nPassword: {password}")
+        else:
+            messagebox.showinfo(title="Error", message="No details for the website exists ")
+
+
 # ---------------------------- UI SETUP ------------------------------- #
+
+
 window = Tk()
 window.title("Password Manager")
 window.config(padx=50, pady=50)
@@ -79,8 +103,8 @@ password_label.grid(column=0, row=3, sticky=EW)
 
 # Entries
 
-website_entry = Entry(width=35)
-website_entry.grid(column=1, row=1, columnspan=2, sticky=EW)
+website_entry = Entry(width=21)
+website_entry.grid(column=1, row=1, sticky=EW)
 website_entry.focus()
 
 email_entry = Entry(width=35)
@@ -98,5 +122,7 @@ generate_password_button.grid(column=2, row=3)
 add_button = Button(text="Add", width=36, command=save)
 add_button.grid(column=1, row=4, columnspan=2, sticky=W)
 
+search_button = Button(text="Search", command=find_password)
+search_button.grid(column=2, row=1, sticky=EW)
 
 window.mainloop()
