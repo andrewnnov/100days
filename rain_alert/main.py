@@ -1,4 +1,10 @@
 import requests
+import os
+from twilio.rest import Client
+
+TWILIO_ACCOUNT_SID = "twil"
+TWILIO_AUTH_TOKEN = "twil"
+
 
 api_key = "3d5b1dfa763a3d3d1c506be6f72d3cc3"
 
@@ -28,10 +34,17 @@ for hour_data in weather_slice:
         will_rain = True
 
 if will_rain:
-    print("Bring an umbrella")
+    # account_sid = os.environ[TWILIO_ACCOUNT_SID]
+    # auth_token = os.environ[TWILIO_AUTH_TOKEN]
+    account_sid = TWILIO_ACCOUNT_SID
+    auth_token = TWILIO_AUTH_TOKEN
+    client = Client(account_sid, auth_token)
 
+    message = client.messages \
+        .create(
+        body="It's going to rain today. Remember to bring an umbrella",
+        from_='TwilPhone',
+        to='myPhone'
+    )
 
-
-
-
-
+    print(message.status)
