@@ -2,14 +2,15 @@ import requests
 import os
 from twilio.rest import Client
 
-TWILIO_ACCOUNT_SID = "twil"
-TWILIO_AUTH_TOKEN = "twil"
+
+account_sid = os.environ.get("TWILIO_ACCOUNT_SID")
+auth_token = os.environ.get("TWILIO_AUTH_TOKEN")
+
+api_key = os.environ.get("OW_API_KEY")
 
 
-api_key = "3d5b1dfa763a3d3d1c506be6f72d3cc3"
-
-MY_LAT = 56.326790
-MY_LONG = 44.005989
+MY_LAT = 53.904541
+MY_LONG = 27.561523
 
 
 OWM_Endpoint = f"https://api.openweathermap.org/data/2.5/onecall"
@@ -34,17 +35,21 @@ for hour_data in weather_slice:
         will_rain = True
 
 if will_rain:
-    # account_sid = os.environ[TWILIO_ACCOUNT_SID]
-    # auth_token = os.environ[TWILIO_AUTH_TOKEN]
-    account_sid = TWILIO_ACCOUNT_SID
-    auth_token = TWILIO_AUTH_TOKEN
+
     client = Client(account_sid, auth_token)
 
     message = client.messages \
         .create(
         body="It's going to rain today. Remember to bring an umbrella",
-        from_='TwilPhone',
-        to='myPhone'
+        from_='XXX',
+        to='YYY'
     )
 
     print(message.status)
+
+
+
+
+
+
+
